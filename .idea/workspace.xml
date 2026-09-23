@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75e8956a-1281-4009-85e7-9046e90143dc" name="Changes" comment="" />
+    <list default="true" id="75e8956a-1281-4009-85e7-9046e90143dc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/common-lib/src/main/java/com/ayushi/payload/request/CityRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-lib/src/main/java/com/ayushi/payload/response/CityResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/location-service/src/main/java/com/ayushi/mapper/CityMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/location-service/src/main/java/com/ayushi/repository/CityRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/location-service/src/main/java/com/ayushi/services/CityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/location-service/src/main/java/com/ayushi/services/impl/CityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +42,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
