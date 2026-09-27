@@ -1,5 +1,6 @@
 package com.ayushi.services.impl;
 
+import com.ayushi.mapper.CityMapper;
 import com.ayushi.model.City;
 import com.ayushi.payload.request.CityRequest;
 import com.ayushi.payload.response.CityResponse;
@@ -74,7 +75,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    @Cacheable(cacheNames = "cities", key = "#id")
+//    @Cacheable(cacheNames = "cities", key = "#id")
     public CityResponse getCityById(Long id) throws ResourceNotFoundException {
         City city = cityRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("City not found with id: " + id));
