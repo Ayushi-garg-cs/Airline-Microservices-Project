@@ -1,5 +1,5 @@
 server:
-  port: 5004
+  port: 5001
 
 spring:
   application:
@@ -8,5 +8,6 @@ spring:
     url: jdbc:mysql://localhost:3306/airline_location_db
     username: root
     password: Ayushi@123
-
-
+  jpa:
+    hibernate:
+      ddl-auto: update

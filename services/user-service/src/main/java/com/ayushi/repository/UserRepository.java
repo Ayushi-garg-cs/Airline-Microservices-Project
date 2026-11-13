@@ -1,6 +1,12 @@
 package com.ayushi.repository;
 
+import com.ayushi.enums.UserRole;
 import com.ayushi.modal.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long>{
+import java.util.Set;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByEmail(String email);
+    Set<User> findByRole(UserRole role);
 }

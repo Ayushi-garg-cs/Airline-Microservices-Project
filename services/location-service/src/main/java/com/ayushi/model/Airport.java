@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.ZoneId;
+
 @Entity
 @Table(name = "airports", indexes = {
         @Index(name = "idx_airport_iata", columnList = "iataCode"),
@@ -49,8 +51,8 @@ public class Airport {
     @Embedded
     private GeoCode geoCode;
 
-    @Embedded
-    private Analytics analytics;
+//    @Embedded
+//    private Analytics analytics;
 
     @Transient
     @com.fasterxml.jackson.annotation.JsonIgnore

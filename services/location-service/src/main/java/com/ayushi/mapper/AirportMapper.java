@@ -30,7 +30,7 @@ public class AirportMapper {
                 .address(airport.getAddress())
                 .city(CityMapper.toResponse(airport.getCity()))
                 .geoCode(airport.getGeoCode())
-                .analytics(airport.getAnalytics())
+//                .analytics(airport.getAnalytics())
                 .build();
     }
 

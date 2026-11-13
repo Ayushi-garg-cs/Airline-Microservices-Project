@@ -5,6 +5,7 @@ import com.ayushi.model.City;
 import com.ayushi.payload.request.CityRequest;
 import com.ayushi.payload.response.CityResponse;
 import com.ayushi.repository.CityRepository;
+import com.ayushi.services.CityService;
 import jakarta.persistence.Cacheable;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -29,11 +30,11 @@ public class CityServiceImpl implements CityService {
     // ---------- Core CRUD ----------
 
     @Override
-    public CityResponse createCity(CityRequest request) throws OperationNotPermittedException {
+    public CityResponse createCity(CityRequest request) throws Exception {
         validateCityRequest(request);
 
         if (cityRepository.existsByCityCode(request.getCityCode())) {
-            throw new OperationNotPermittedException("City with code " + request.getCityCode() + " already exists");
+            throw new Exception("City with code " + request.getCityCode() + " already exists");
         }
 
         City city = CityMapper.toEntity(request);
@@ -44,7 +45,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public List<CityResponse> createBulkCities(List<CityRequest> requests) throws OperationNotPermittedException {
+    public List<CityResponse> createBulkCities(List<CityRequest> requests) throws Exception {
         List<CityResponse> createdCities = new ArrayList<>();
         List<String> skippedCodes = new ArrayList<>();
 
@@ -76,9 +77,9 @@ public class CityServiceImpl implements CityService {
 
     @Override
 //    @Cacheable(cacheNames = "cities", key = "#id")
-    public CityResponse getCityById(Long id) throws ResourceNotFoundException {
+    public CityResponse getCityById(Long id) throws Exception {
         City city = cityRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("City not found with id: " + id));
+                .orElseThrow(() -> new Exception("City not found with id: " + id));
         return CityMapper.toResponse(city);
     }
 
@@ -89,14 +90,14 @@ public class CityServiceImpl implements CityService {
             @CacheEvict(cacheNames = "citiesByCode", allEntries = true)
     })
     public CityResponse updateCity(Long id, CityRequest request)
-            throws ResourceNotFoundException, OperationNotPermittedException {
+            throws Exception, Exception {
         City city = cityRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("City not found with id: " + id));
+                .orElseThrow(() -> new Exception("City not found with id: " + id));
 
         validateCityRequest(request, id);
 
         if (cityRepository.existsByCityCodeAndIdNot(request.getCityCode(), id)) {
-            throw new OperationNotPermittedException("City with code " + request.getCityCode() + " already exists");
+            throw new Exception("City with code " + request.getCityCode() + " already exists");
         }
 
         City updatedCity = cityRepository.save(CityMapper.updateEntity(city, request));
@@ -110,9 +111,9 @@ public class CityServiceImpl implements CityService {
             @CacheEvict(cacheNames = "cities", key = "#id"),
             @CacheEvict(cacheNames = "citiesByCode", allEntries = true)
     })
-    public void deleteCity(Long id) throws ResourceNotFoundException {
+    public void deleteCity(Long id) throws Exception {
         City city = cityRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("City not found with id: " + id));
+                .orElseThrow(() -> new Exception("City not found with id: " + id));
         cityRepository.delete(city);
         log.info("City deleted: {} ({})", city.getName(), city.getCityCode());
     }

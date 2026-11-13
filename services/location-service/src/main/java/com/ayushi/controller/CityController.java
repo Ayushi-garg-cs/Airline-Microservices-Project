@@ -3,6 +3,7 @@ package com.ayushi.controller;
 import com.ayushi.payload.request.CityRequest;
 import com.ayushi.payload.response.ApiResponse;
 import com.ayushi.payload.response.CityResponse;
+import com.ayushi.services.CityService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +30,7 @@ public class CityController {
     @PostMapping
     public ResponseEntity<CityResponse> createCity(
             @Valid @RequestBody CityRequest request)
-            throws OperationNotPermittedException {
+            throws Exception {
         CityResponse response = cityService.createCity(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
@@ -37,7 +38,7 @@ public class CityController {
     @PostMapping("/bulk")
     public ResponseEntity<List<CityResponse>> createBulkCities(
             @Valid @RequestBody List<CityRequest> requests)
-            throws OperationNotPermittedException {
+            throws Exception {
         List<CityResponse> responses = cityService.createBulkCities(requests);
         return ResponseEntity.status(HttpStatus.CREATED).body(responses);
     }
@@ -46,7 +47,7 @@ public class CityController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CityResponse> getCityById(@PathVariable Long id)
-            throws ResourceNotFoundException {
+            throws Exception {
         return ResponseEntity.ok(cityService.getCityById(id));
     }
 
@@ -68,7 +69,7 @@ public class CityController {
     public ResponseEntity<CityResponse> updateCity(
             @PathVariable Long id,
             @Valid @RequestBody CityRequest request)
-            throws ResourceNotFoundException, OperationNotPermittedException {
+            throws Exception {
         return ResponseEntity.ok(cityService.updateCity(id, request));
     }
 
@@ -76,7 +77,7 @@ public class CityController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse> deleteCity(@PathVariable Long id)
-            throws ResourceNotFoundException {
+            throws Exception {
         cityService.deleteCity(id);
         return ResponseEntity.ok(new ApiResponse("City deleted successfully"));
     }

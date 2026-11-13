@@ -1,4 +1,4 @@
-
+package com.ayushi.services;
 
 import com.ayushi.payload.request.CityRequest;
 import com.ayushi.payload.response.CityResponse;
@@ -10,12 +10,12 @@ import java.util.List;
 public interface CityService {
 
     // ---------- Core CRUD ----------
-    CityResponse createCity(CityRequest request) throws OperationNotPermittedException;
-    List<CityResponse> createBulkCities(List<CityRequest> requests) throws OperationNotPermittedException;
-    CityResponse getCityById(Long id) throws ResourceNotFoundException;
+    CityResponse createCity(CityRequest request) throws Exception;
+    List<CityResponse> createBulkCities(List<CityRequest> requests) throws Exception;
+    CityResponse getCityById(Long id) throws Exception;
 
-    CityResponse updateCity(Long id, CityRequest request) throws ResourceNotFoundException, OperationNotPermittedException;
-    void deleteCity(Long id) throws ResourceNotFoundException;
+    CityResponse updateCity(Long id, CityRequest request) throws Exception;
+    void deleteCity(Long id) throws Exception;
     Page<CityResponse> getAllCities(Pageable pageable);
 
     // ---------- Search & Query ----------

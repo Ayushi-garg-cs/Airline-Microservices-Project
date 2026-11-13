@@ -56,7 +56,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Framework versions — single source of truth -->
-        <spring.boot.version>4.0.8</spring.boot.version>
+        <spring.boot.version>4.1.2</spring.boot.version>
         <spring.cloud.version>2025.1.0</spring.cloud.version>
     </properties>
 
