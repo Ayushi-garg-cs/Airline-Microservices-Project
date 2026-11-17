@@ -1,0 +1,12 @@
+server:
+  port: 5003
+spring:
+  application:
+    name: airline-core-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/airline_db
+    username: root
+    password: Ayushi@123
+  jpa:
+    hibernate:
+      ddl-auto: update
